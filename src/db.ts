@@ -1,5 +1,7 @@
 import { createConnection } from "typeorm";
 import { DB_HOST, DB_USERNAME, DB_PASSWORD, DB_PORT, DB_NAME } from "./config";
+import { Users } from "./Entities/Users";
+
 
 export const connectDB = async () => {
   await createConnection(
@@ -12,7 +14,9 @@ export const connectDB = async () => {
       port: Number(DB_PORT),
       logging: true,
       synchronize: true,
-      entities: [],
+      entities: [
+        Users
+      ],
       ssl: true,
     }
   );
