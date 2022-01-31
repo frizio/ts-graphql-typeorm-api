@@ -1,6 +1,6 @@
 {
-  "name": "graphql-crud",
-  "version": "1.0.0",
+  "name": "ts-graphql-crud",
+  "version": "1.0.1",
   "description": "Demo Web Application CRUD",
   "main": "index.js",
   "scripts": {
