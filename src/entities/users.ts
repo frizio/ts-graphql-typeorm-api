@@ -2,6 +2,7 @@ import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity()
 export class Users extends BaseEntity {
+  
   @PrimaryGeneratedColumn()
   id: number;
 
@@ -13,4 +14,5 @@ export class Users extends BaseEntity {
 
   @Column()
   password: string;
+
 }
