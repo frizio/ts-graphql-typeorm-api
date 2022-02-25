@@ -2,14 +2,15 @@ import { GraphQLObjectType, GraphQLSchema } from "graphql";
 import { GREETING_QUERY } from './Queries/GreetingQ';
 import { GREETING_MUTATION } from './Mutations/GreetingM';
 import { CREATE_USER } from "./Mutations/User";
-import { GET_ALL_USERS } from './Queries/User';
+import { GET_ALL_USERS, GET_USER } from './Queries/User';
 
 
 const RootQuery = new GraphQLObjectType({
   name: "RootQuery",
   fields: {
     greeting: GREETING_QUERY,
-    getAllUsers: GET_ALL_USERS
+    getAllUsers: GET_ALL_USERS,
+    getUser: GET_USER
   },
 });
 
