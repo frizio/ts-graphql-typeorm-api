@@ -1,7 +1,7 @@
-import { UserType } from './../TypeDefs/User';
-import { Users } from './../../entities/users';
-import { GraphQLString } from 'graphql';
-import bcrypt from 'bcryptjs'
+import { UserType } from "./../TypeDefs/User";
+import { Users } from "./../../entities/users";
+import { GraphQLBoolean, GraphQLID, GraphQLString } from "graphql";
+import bcrypt from "bcryptjs";
 
 export const CREATE_USER = {
   type: UserType,
@@ -11,21 +11,33 @@ export const CREATE_USER = {
     password: { type: GraphQLString },
   },
   async resolve(_: any, args: any) {
-    const {name, username, password} = args;
-    const encryptPassword =  await bcrypt.hash(password, 10);
+    const { name, username, password } = args;
+    const encryptPassword = await bcrypt.hash(password, 10);
     const result = await Users.insert({
       name: name,
       username: username,
-      password: encryptPassword
+      password: encryptPassword,
     });
     //console.log(result);
     const id = result.identifiers[0].id;
-    const output = { 
-      id, 
+    const output = {
+      id,
       name,
-      username, 
-      password: encryptPassword 
+      username,
+      password: encryptPassword,
     };
     return output;
-  }
+  },
+};
+
+export const DELETE_USER = {
+  type: GraphQLBoolean,
+  args: {
+    id: { type: GraphQLID },
+  },
+  resolve(_: any, args: any) {
+    const id = args.id;
+    console.log(id);
+    return false;
+  },
 };
