@@ -35,9 +35,13 @@ export const DELETE_USER = {
   args: {
     id: { type: GraphQLID },
   },
-  resolve(_: any, args: any) {
+  async resolve(_: any, args: any) {
     const id = args.id;
-    console.log(id);
+    const result = await Users.delete(id);
+    console.log(result);
+    if (result.affected === 1) {
+      return true;
+    }
     return false;
   },
 };
